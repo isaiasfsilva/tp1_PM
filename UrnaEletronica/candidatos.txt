@@ -1,0 +1,15 @@
+1;1;1;João da Silva
+2;11;2;José Alves
+3;2;2;Alfredo Torres
+4;21;1;Roberto Carlos
+5;3;3;Ricardo Souza
+6;31;1;Neymar Júnior
+7;4;1;Daniel San
+8;4;2;Carlos Chagas
+9;4;3;Thiago Silva
+10;5;1;David Luis
+11;5;1;Guilherme Gomes
+12;5;3;William Jones
+13;6;2;Michael Jackson
+14;6;2;Victor Daniel
+15;6;3;Alexandre Bastos
