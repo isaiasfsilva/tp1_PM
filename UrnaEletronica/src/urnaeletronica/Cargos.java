@@ -7,15 +7,32 @@ package urnaeletronica;
 
 /**
  *
- * @author isaiasfaria
+ * 
  */
-public class Cargos {
+//Esta classe não pode ser herdada. Somente instanciada.
+public final class Cargos {
     private int id; 
-    public Cargos(int ID){
+    private String nome;
+    public Cargos(int ID, String Nome){
        this.setID(ID);
+       this.setNome(Nome);
     }
-    //Função responsável em setar o ID de cada Cargo
-    private final void setID(int ID){
+    //Método responsável em setar o ID de cada cargo
+    private void setID(int ID){
         this.id=ID;
+    }
+    //Retorna o ID
+    public final int getID(){
+        return this.id;
+    }
+    
+    //Método para definir um nome
+    public final void setNome(String Nome){
+        this.nome=Nome;
+    }
+    
+    //Retorna o nome do cargo
+    public final String getNome(){
+        return this.nome;
     }
 }

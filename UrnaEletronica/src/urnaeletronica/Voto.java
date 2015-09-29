@@ -9,13 +9,33 @@ package urnaeletronica;
  *
  * @author isaiasfaria
  */
-public class Voto {
+public abstract class Voto {
     private int id; 
-    public Voto(int ID){
+    private Cargos cargo;
+    public Voto(int ID, Cargos cargo){
        this.setID(ID);
+       this.cargo=cargo;
     }
     //Função responsável em setar o ID de cada Voto
-    private final void setID(int ID){
+    private void setID(int ID){
         this.id=ID;
     }
+    
+    //Retorna o  ID do voto
+    public final int getID(){
+        return this.id;
+    }
+    
+    //Seta para qual cargo é esse voto
+    public final void setCargo(Cargos cargo){
+        this.cargo = cargo;
+    }
+    
+    //Retorna o cargo
+    public final Cargos getCargo(){ //OU DEVERIA SER getNomeCargo e getIdCargo ???
+        return this.cargo;
+    }
+    
+    public abstract char getTipo();
 }
+

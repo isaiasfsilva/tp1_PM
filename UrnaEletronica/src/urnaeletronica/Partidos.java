@@ -7,9 +7,10 @@ package urnaeletronica;
 
 /**
  *
- * @author isaiasfaria
+ * 
  */
-public class Partidos {
+//Esta classe não pode ser herdada. Somente instanciada.
+public final class Partidos {
     private int id; 
     private String nome;
     public Partidos(int ID, String Nome){
@@ -17,7 +18,7 @@ public class Partidos {
        this.setNome(Nome);
     }
     //Método responsável em setar o ID de cada partido
-    private final void setID(int ID){
+    private void setID(int ID){
         this.id=ID;
     }
     //Retorna o ID
