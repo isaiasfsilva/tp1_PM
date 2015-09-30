@@ -17,8 +17,7 @@ public class UrnaEletronica {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Utils u = new Utils();
-        Eleicao e = new Eleicao();
+       Eleicao e = new Eleicao();
         
     //Lembrar de adicionar os métodos de importar dentro de ELEIÇÃO !?? oU DENTRO DE UTILS?    
         //carrega todos os cargos
@@ -59,7 +58,7 @@ public class UrnaEletronica {
         
         
         e.listaCandidatos();
-        
+       
       }
     
 }

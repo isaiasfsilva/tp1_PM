@@ -12,12 +12,13 @@ import urnaeletronica.*;
  */
 public class Utils {
     // Retorna o candidato A se ele vier primeiro pela ordem alfabética. Se der empate retorna o A.
-    public Candidatos ordemAlfabetica(Candidatos A, Candidatos B){
+    public static Candidatos ordemAlfabetica(Candidatos A, Candidatos B){
         if(B.getNome().compareTo(A.getNome())<0)
             return B;
         else 
             return A;
     }
+    
     
    
 }
