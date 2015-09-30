@@ -9,7 +9,7 @@ package urnaeletronica;
  *
  * @author isaiasfaria and André
  */
-public class Candidatos {
+public final class Candidatos {
     private int id; 
     private Cargos cargo;
     private Partidos partido; //ou seria private int idPartido????
@@ -27,37 +27,37 @@ public class Candidatos {
         this.id=ID;
     }
     //Função para retornar ID
-    public final int getID(){
+    public int getID(){
         return this.id;
     }
     
     //Seta o nome do candidato
-    public final void setNome(String nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
     
     //Retorna o nome do Candidato
-    public final String getNome(){
+    public String getNome(){
         return this.nome;
     }
     
     //Seta Cargo
-    public final void setCargo(Cargos cargo){
+    public void setCargo(Cargos cargo){
         this.cargo=cargo;
     }
     
     //Retorna qual cargo
-    public final String getNomeCargo(){
+    public String getNomeCargo(){
         return this.cargo.getNome();
     }
     
     //Seta Partido
-    public final void setPartido(Partidos partido){
+    public void setPartido(Partidos partido){
         this.partido = partido;
     }
     
     //Retorna nome partido
-    public final String getNomePartido(){
+    public String getNomePartido(){
         return this.partido.getNome();
     }
 }

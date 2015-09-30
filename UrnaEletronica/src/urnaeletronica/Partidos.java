@@ -22,17 +22,17 @@ public final class Partidos {
         this.id=ID;
     }
     //Retorna o ID
-    public final int getID(){
+    public int getID(){
         return this.id;
     }
     
     //Método para definir um nome
-    public final void setNome(String Nome){
+    public void setNome(String Nome){
         this.nome=Nome;
     }
     
     //Retorna o nome do partido
-    public final String getNome(){
+    public String getNome(){
         return this.nome;
     }
 }
