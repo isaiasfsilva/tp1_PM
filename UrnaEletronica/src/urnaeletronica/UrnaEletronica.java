@@ -5,9 +5,6 @@
 package urnaeletronica;
 import Eleicao.*;
 import Utils.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 /**
  *
  * @author isaiasfaria
