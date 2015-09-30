@@ -9,11 +9,10 @@ package urnaeletronica;
  *
  * @author isaiasfaria and André
  */
-public final class Candidatos {
+public final class Candidatos extends Pessoa {
     private int id; 
     private Cargos cargo;
     private Partidos partido; //ou seria private int idPartido????
-    private String nome;
     
     //Construtor
     public Candidatos(int ID, String nome, Cargos cargo, Partidos partido){
@@ -32,14 +31,7 @@ public final class Candidatos {
     }
     
     //Seta o nome do candidato
-    public void setNome(String nome){
-        this.nome = nome;
-    }
     
-    //Retorna o nome do Candidato
-    public String getNome(){
-        return this.nome;
-    }
     
     //Seta Cargo
     public void setCargo(Cargos cargo){
