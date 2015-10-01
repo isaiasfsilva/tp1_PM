@@ -21,6 +21,7 @@ public final class Candidatos extends Pessoa {
        this.setCargo(cargo);
        this.setPartido(partido);
     }
+    
     //Função responsável em setar o ID de cada Candidato
     private void setID(int ID){
         this.id=ID;
@@ -29,9 +30,6 @@ public final class Candidatos extends Pessoa {
     public int getID(){
         return this.id;
     }
-    
-    //Seta o nome do candidato
-    
     
     //Seta Cargo
     public void setCargo(Cargos cargo){
@@ -49,7 +47,7 @@ public final class Candidatos extends Pessoa {
     }
     
     //Retorna nome partido
-    public String getNomePartido(){
-        return this.partido.getNome();
+    public Partidos getPartido(){
+        return this.partido;
     }
 }

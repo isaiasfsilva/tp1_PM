@@ -9,12 +9,16 @@ package Eleicao;
  *
  * @author isaiasfaria
  */
-public abstract class Voto {
+public class Voto {
+    
     private int id; 
     private Cargos cargo;
+    private int Qvotos;
+    
     public Voto(int ID, Cargos cargo){
        this.setID(ID);
-       this.cargo=cargo;
+       this.setCargo(cargo);
+       this.zeraVotos();
     }
     //Função responsável em setar o ID de cada Voto
     private void setID(int ID){
@@ -36,6 +40,13 @@ public abstract class Voto {
         return this.cargo;
     }
     
-    public abstract char getTipo();
+
+    private void zeraVotos() {
+        this.Qvotos=0;
+    }
+    
+    public final void addVoto(){
+        this.Qvotos++;
+    }
 }
 

@@ -20,14 +20,15 @@ public final class VotoLegenda extends Voto{
     }
 
     //Seta Partido do Voto
-    public void setPartido(Partidos partido){
+    private void setPartido(Partidos partido){
         this.partido=partido;
     }
     
-    @Override
-    public char getTipo() {
-        return 'L';
+    public Partidos getPartido(){
+        return this.partido;
     }
     
+   
+   
     
 }

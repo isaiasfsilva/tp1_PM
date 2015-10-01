@@ -11,8 +11,10 @@ package Eleicao;
  */
 //Esta classe não pode ser herdada. Somente instanciada.
 public final class Partidos {
+    
     private int id; 
     private String nome;
+    
     public Partidos(int ID, String Nome){
        this.setID(ID);
        this.setNome(Nome);

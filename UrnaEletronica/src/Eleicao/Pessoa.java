@@ -9,7 +9,7 @@ package Eleicao;
  *
  * @author isaiasfaria
  */
-public class Pessoa {
+public abstract class Pessoa {
     private String nome;
     
     public void setNome(String nome){

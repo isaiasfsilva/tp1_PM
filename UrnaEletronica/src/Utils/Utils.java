@@ -8,7 +8,6 @@ import Eleicao.Eleicao;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import urnaeletronica.*;
 
 
 /**
@@ -62,4 +61,19 @@ public class Utils {
                 System.out.println("Erro ao importar os Candidatos. Abortando operação agora!");
         }
     }
+    
+ //carrega todos os Votos
+    public static void loadVotos(Eleicao e){
+        try (BufferedReader br = new BufferedReader(new FileReader("votos.txt"))){
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) { 
+                //Percorre todos os votos
+                   String[] s = sCurrentLine.split(";"); // Pega o ID em s[0] e o nome em s[1]
+                   e.addVoto(Integer.parseInt(s[0]), Integer.parseInt(s[1]),  s[2].charAt(0), Integer.parseInt(s[3]));
+            }
+        } catch (IOException error) {
+                System.out.println("Erro ao importar os cargos. Abortando operação agora!");
+        }   
+    }
+   
 }

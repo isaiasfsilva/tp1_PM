@@ -21,9 +21,10 @@ public class UrnaEletronica {
         Utils.loadCargos(e);
         Utils.loadPartidos(e);
         Utils.loadCandidatos(e);
-        
-        e.listaCandidatos();
-       
+        Utils.loadVotos(e);
+
+        //e.listaCandidatos();
+        e.listaVotos();
       }
     
 }

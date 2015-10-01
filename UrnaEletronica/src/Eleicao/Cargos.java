@@ -11,11 +11,15 @@ package Eleicao;
  */
 //Esta classe não pode ser herdada. Somente instanciada.
 public final class Cargos {
+    
     private int id; 
     private String nome;
-    public Cargos(int ID, String Nome){
+    private boolean majoritario;
+    
+    public Cargos(int ID, String Nome, boolean majoritario){
        this.setID(ID);
        this.setNome(Nome);
+       this.setMajoritario(majoritario);
     }
     //Método responsável em setar o ID de cada cargo
     private void setID(int ID){
@@ -34,5 +38,15 @@ public final class Cargos {
     //Retorna o nome do cargo
     public String getNome(){
         return this.nome;
+    }
+    
+    //REtorna o tipo de sistema 
+    public boolean getMajoritario(){
+        return this.majoritario;
+        
+    }
+
+    private void setMajoritario(boolean majoritario) {
+        this.majoritario = majoritario;
     }
 }
