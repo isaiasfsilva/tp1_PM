@@ -6,8 +6,12 @@ package Utils;
 import Eleicao.Candidatos;
 import Eleicao.Eleicao;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 
 /**
@@ -55,7 +59,7 @@ public class Utils {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
                    String[] s = sCurrentLine.split(";"); // Pega o ID em s[0] e o nome em s[1]
-                   e.addCandidato(Integer.parseInt(s[0]), s[1],e.getCargoByID(Integer.parseInt(s[2])), e.getPartidoByID(Integer.parseInt(s[2])));
+                   e.addCandidato(Integer.parseInt(s[0]), s[3],e.getCargoByID(Integer.parseInt(s[1])), e.getPartidoByID(Integer.parseInt(s[2])));
             }
         } catch (IOException error) {
                 System.out.println("Erro ao importar os Candidatos. Abortando operação agora!");
@@ -70,10 +74,54 @@ public class Utils {
                 //Percorre todos os votos
                    String[] s = sCurrentLine.split(";"); // Pega o ID em s[0] e o nome em s[1]
                    e.addVoto(Integer.parseInt(s[0]), Integer.parseInt(s[1]),  s[2].charAt(0), Integer.parseInt(s[3]));
+                   
+            
             }
         } catch (IOException error) {
                 System.out.println("Erro ao importar os cargos. Abortando operação agora!");
         }   
     }
    
+    
+
+//Carrega todos as estatísticas
+    public static void loadRelatorios(Eleicao e){
+        try (BufferedReader br = new BufferedReader(new FileReader("info.txt"))){
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                String[] s = sCurrentLine.split(";"); // Pega o ID em s[0] e o nome em s[1]
+                
+                //Cria arquivo de saíde
+                Writer writer = null;
+                try {
+                    writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("estatistica-"+s[0]+"-"+s[1]+".txt"), "utf-8"));
+                 
+                    switch (Integer.parseInt(s[0])){
+                        case 1:
+                            writer.write(e.getRelatorioGeral(Integer.parseInt(s[1])));
+                            break;
+                        case 2:
+                            writer.write(e.getRelatorioByCargo(e.getCargoByID(Integer.parseInt(s[1]))));
+                            break;
+                        case 3:
+                             writer.write(e.getRelatorioByCandidato(e.getCandidatoByID(Integer.parseInt(s[1]))));
+                            break;
+                        default:
+                           writer.write("Tipo de Relatório inexistente");
+
+                        }
+                    } catch (IOException ex) {
+                      // report
+                    } finally {
+                       try {writer.close();} catch (Exception ex) {/*ignore*/}
+                    }
+            
+            
+            }
+        } catch (IOException error) {
+                System.out.println("Erro ao importar os Candidatos. Abortando operação agora!");
+        }
+    }
+    
 }

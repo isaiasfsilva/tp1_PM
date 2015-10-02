@@ -23,8 +23,10 @@ public class UrnaEletronica {
         Utils.loadCandidatos(e);
         Utils.loadVotos(e);
 
+        Utils.loadRelatorios(e);
         //e.listaCandidatos();
-        e.listaVotos();
+        //e.listaVotos();
+        
       }
     
 }

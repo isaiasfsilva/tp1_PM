@@ -48,5 +48,9 @@ public class Voto {
     public final void addVoto(){
         this.Qvotos++;
     }
+    
+    public final int getVotos(){
+        return this.Qvotos;
+    }
 }
 

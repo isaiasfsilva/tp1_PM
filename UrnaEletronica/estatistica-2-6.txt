@@ -1,0 +1,10 @@
+Candidatos - Vereador	Votos
+Michael Jackson	1
+Victor Daniel	1
+Alexandre Bastos	2
+Brancos 	2
+Nulos 	0
+
+Partidos
+PAB	2
+PPP	1

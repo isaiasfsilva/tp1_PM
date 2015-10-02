@@ -35,6 +35,12 @@ public final class Candidatos extends Pessoa {
     public void setCargo(Cargos cargo){
         this.cargo=cargo;
     }
+
+    //Retorna Partido
+    public Cargos getCargo(){
+        return this.cargo;
+    }
+    
     
     //Retorna qual cargo
     public String getNomeCargo(){
@@ -50,4 +56,9 @@ public final class Candidatos extends Pessoa {
     public Partidos getPartido(){
         return this.partido;
     }
+
+  
+       
+            
+    
 }
