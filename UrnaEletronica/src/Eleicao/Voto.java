@@ -36,7 +36,7 @@ public class Voto {
     }
     
     //Retorna o cargo
-    public final Cargos getCargo(){ //OU DEVERIA SER getNomeCargo e getIdCargo ???
+    public final Cargos getCargo(){ 
         return this.cargo;
     }
     

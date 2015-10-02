@@ -45,7 +45,8 @@ public final class Cargos {
         return this.majoritario;
         
     }
-
+    
+    //Retorna se um cargo usa sistema majoritário (true) ou proporcional(false)
     private void setMajoritario(boolean majoritario) {
         this.majoritario = majoritario;
     }

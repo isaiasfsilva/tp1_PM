@@ -21,11 +21,14 @@ public class UrnaEletronica {
         Utils.loadCargos(e);
         Utils.loadPartidos(e);
         Utils.loadCandidatos(e);
+   
+    //Faz a votação - Lembre-se: BOCA DE URNA é CRIME!
         Utils.loadVotos(e);
-        //e.getRelatorioGeral(Integer.parseInt("1"));
+       
+        
+    //Declara vitórias!
         Utils.loadRelatorios(e);
-        //e.listaCandidatos();
-        //e.listaVotos();
+       
         
       }
     

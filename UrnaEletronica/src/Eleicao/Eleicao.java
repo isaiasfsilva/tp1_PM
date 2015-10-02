@@ -80,7 +80,7 @@ public final class Eleicao {
               //O cargo informado é de um VICE
               //Se é voto de LEGENDA e o ID do partido não existe
               //Se é voto de CANDIDATO e o ID do candidato não existe
-    if(idDest==0){
+        if(idDest==0){
               if(getVotoEmBrancoByCargo(idCargo)==null)
                  this.votosBranco.add(new Voto(ID, this.getCargoByID(idCargo)));
 
@@ -124,9 +124,10 @@ public final class Eleicao {
         }
 
     }
+    
+ //Retorna os votos do candidato @idCandidato
  public VotoCandidato getVotoByIdAndCargo(int idCandidato){
         for (VotoCandidato v : this.votosCandidatos) {
-
             if ( v.getCandidato().getID() == idCandidato ) {
                 return v;
             }
@@ -134,7 +135,7 @@ public final class Eleicao {
         return null;        
      }  
  
- 
+ //Retorna os votos para um @idCargo de um determinado partido @idCandidato
  public VotoLegenda getVotoByIdAndPartido(int idPartido, int idCargo){
         for (VotoLegenda v : this.votosLegenda) {
 
@@ -169,7 +170,7 @@ public final class Eleicao {
   
   
      
-    
+//Retorna o candidato eleito para um cargo @cargo 
       public final Candidatos getEleitoByCargo(Cargos cargo){
           VotoCandidato c_tmp=null; //Candidato temporário
           if(cargo.getMajoritario()){
@@ -340,6 +341,7 @@ public final class Eleicao {
         return (maxEntry==null)?null:maxEntry.getKey();
     }
 
+    //Gera relatório dos eleitos para todos os cargos
     public String getRelatorioGeral() {
         String s="";
         s+=("Cargo \t Eleito\n");

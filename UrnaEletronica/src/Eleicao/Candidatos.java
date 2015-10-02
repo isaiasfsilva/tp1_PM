@@ -41,12 +41,6 @@ public final class Candidatos extends Pessoa {
         return this.cargo;
     }
     
-    
-    //Retorna qual cargo
-    public String getNomeCargo(){
-        return this.cargo.getNome();
-    }
-    
     //Seta Partido
     public void setPartido(Partidos partido){
         this.partido = partido;
