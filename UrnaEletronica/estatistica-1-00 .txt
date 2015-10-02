@@ -1,5 +1,5 @@
 Cargo 	 Eleito
-Presidente	João da Silva
+Presidente	Jo�o da Silva
 Governador	Alfredo Torres
 Prefeito	Ricardo Souza
 Deputado federal	Daniel San

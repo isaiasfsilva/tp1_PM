@@ -1,9 +1,11 @@
-1;1;1;JoÃ£o da Silva
-2;11;2;JosÃ© Alves
+1;1;1;João da Silva
+11;11;2;José Alves
+2;1;1;João da Silva
+21;11;2;José Alves
 3;2;2;Alfredo Torres
-4;21;1;Roberto Carlos
+31;21;1;Roberto Carlos
 5;3;3;Ricardo Souza
-6;31;1;Neymar JÃºnior
+41;31;1;Neymar Júnior
 7;4;1;Daniel San
 8;4;2;Carlos Chagas
 9;4;3;Thiago Silva

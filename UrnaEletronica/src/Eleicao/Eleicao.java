@@ -24,10 +24,11 @@ public final class Eleicao {
      
 //Métodos relacionados à cargos
      //Adiciona um novo Cargo
-     public Cargos addCargo(int ID, String nome){
-         Cargos tmp = new Cargos(ID, nome, Eleicao.getSistema(nome));
-         this.cargos.add(tmp);
-         return tmp;
+     public void addCargo(int ID, String nome){
+         
+   
+         this.cargos.add(new Cargos(ID, nome, this.getSistema(nome)));
+        
      }
      
     public Cargos getCargoByID(int ID){
@@ -75,38 +76,42 @@ public final class Eleicao {
     
  //Métodos relacionados aos votos
     public void addVoto(int ID, int idCargo, char tipo, int idDest){
-        
         //O voto é NULO se:
               //O cargo informado é de um VICE
               //Se é voto de LEGENDA e o ID do partido não existe
               //Se é voto de CANDIDATO e o ID do candidato não existe
-        if (idCargo>9 ||(tipo=='L' && this.getCargoByID(idDest)==null) || (tipo=='C' && this.getCandidatoByID(idDest)==null)){//Se é voto em BRANCO
-          if(getVotoEmBrancoByCargo(idCargo)==null)
+    if(idDest==0){
+              if(getVotoEmBrancoByCargo(idCargo)==null)
                  this.votosBranco.add(new Voto(ID, this.getCargoByID(idCargo)));
 
                  //vota no candidato / Cargo
                 getVotoEmBrancoByCargo(idCargo).addVoto();
                  
                  
-                 
-        }else if(idDest==99){
-              if(getVotoNuloByCargo(idCargo)==null)
-                 this.votosNulo.add(new Voto(ID, this.getCargoByID(idCargo)));
-
-                 //vota no candidato / Cargo
-                 getVotoNuloByCargo(idCargo).addVoto();
-                 
         }else{ //Se não é voto em branco!!
         
             if(tipo=='L'){ //se é voto de legenda!
+                if(this.getPartidoByID(idDest)==null){//Se é NULO
+                    if(getVotoNuloByCargo(idCargo)==null)
+                        this.votosNulo.add(new Voto(ID, this.getCargoByID(idCargo)));
 
-                if(getVotoByIdAndPartido(idDest, idCargo)==null)
+                    //vota no candidato / Cargo
+                    getVotoNuloByCargo(idCargo).addVoto();  
+                }else{
+                 if(getVotoByIdAndPartido(idDest, idCargo)==null)
                     this.votosLegenda.add(new VotoLegenda(ID, this.getCargoByID(idCargo), this.getPartidoByID(idDest)));
 
                     //vota no candidato / Cargo
                     getVotoByIdAndPartido(idDest, idCargo).addVoto();
+                }
             }else if(tipo=='C'){
+                if(this.getCandidatoByID(idDest)==null){//Se é NULO
+                    if(getVotoNuloByCargo(idCargo)==null)
+                      this.votosNulo.add(new Voto(ID, this.getCargoByID(idCargo)));
 
+                    //vota no candidato / Cargo
+                    getVotoNuloByCargo(idCargo).addVoto();  
+                }else{
                 //Se não existe voto similar, ele cria. Caso contrário ADD VOTO
                if(getVotoByIdAndCargo(idDest)==null)
                   this.votosCandidatos.add(new VotoCandidato(ID, this.getCargoByID(idCargo), getCandidatoByID(idDest)));
@@ -114,9 +119,10 @@ public final class Eleicao {
 
                //vota no candidato / Cargo
                getVotoByIdAndCargo(idDest).addVoto();
-
+                }
             }
         }
+
     }
  public VotoCandidato getVotoByIdAndCargo(int idCandidato){
         for (VotoCandidato v : this.votosCandidatos) {
@@ -258,7 +264,7 @@ public final class Eleicao {
        return s;
     }
 
-    //Gera relatório do Cardo
+    //Gera relatório do Cargo
     public String getRelatorioByCargo(Cargos cargo) {
        String s="";
        s+=("Candidatos - "+cargo.getNome()+"\tVotos\n");
@@ -277,7 +283,7 @@ public final class Eleicao {
         
         qvotos=0;
         for (i=0; i<this.votosNulo.size(); i++) { 
-            if(this.votosBranco.get(i).getCargo()==cargo)
+            if(this.votosNulo.get(i).getCargo()==cargo)
                 qvotos=this.votosNulo.get(i).getVotos();
         }
         s+=("Nulos \t" +qvotos+"\n\n");
@@ -334,7 +340,7 @@ public final class Eleicao {
         return (maxEntry==null)?null:maxEntry.getKey();
     }
 
-    public String getRelatorioGeral(int parseInt) {
+    public String getRelatorioGeral() {
         String s="";
         s+=("Cargo \t Eleito\n");
         int i;

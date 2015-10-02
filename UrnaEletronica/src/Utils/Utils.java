@@ -95,20 +95,20 @@ public class Utils {
                 Writer writer = null;
                 try {
                     writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("estatistica-"+s[0]+"-"+s[1]+".txt"), "utf-8"));
+                    new FileOutputStream("estatistica-"+s[0]+"-"+s[1]+".txt")));
                  
                     switch (Integer.parseInt(s[0])){
                         case 1:
-                            writer.write(e.getRelatorioGeral(Integer.parseInt(s[1])));
+                            writer.write(e.getRelatorioGeral());
                             break;
                         case 2:
                             writer.write(e.getRelatorioByCargo(e.getCargoByID(Integer.parseInt(s[1]))));
                             break;
                         case 3:
-                             writer.write(e.getRelatorioByCandidato(e.getCandidatoByID(Integer.parseInt(s[1]))));
+                            writer.write(e.getRelatorioByCandidato(e.getCandidatoByID(Integer.parseInt(s[1]))));
                             break;
                         default:
-                           writer.write("Tipo de Relatório inexistente");
+                           //writer.write("Tipo de Relatório inexistente");
 
                         }
                     } catch (IOException ex) {

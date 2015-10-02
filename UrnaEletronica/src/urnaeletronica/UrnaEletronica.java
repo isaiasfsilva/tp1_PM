@@ -22,7 +22,7 @@ public class UrnaEletronica {
         Utils.loadPartidos(e);
         Utils.loadCandidatos(e);
         Utils.loadVotos(e);
-
+        //e.getRelatorioGeral(Integer.parseInt("1"));
         Utils.loadRelatorios(e);
         //e.listaCandidatos();
         //e.listaVotos();
