@@ -1,7 +1,0 @@
-Cargo 	 Eleito
-Presidente	Jo�o da Silva
-Governador	Alfredo Torres
-Prefeito	Ricardo Souza
-Deputado federal	Daniel San
-Deputado estadual	William Jones
-Vereador	Michael Jackson

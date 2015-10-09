@@ -5,10 +5,6 @@
  */
 package Eleicao;
 
-/**
- *
- * 
- */
 //Esta classe não pode ser herdada. Somente instanciada.
 public final class Partidos {
     

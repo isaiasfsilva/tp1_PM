@@ -108,7 +108,7 @@ public class Utils {
                             writer.write(e.getRelatorioByCandidato(e.getCandidatoByID(Integer.parseInt(s[1]))));
                             break;
                         default:
-                           //writer.write("Tipo de Relatório inexistente");
+                           writer.write("Tipo de Relatório inexistente");
 
                         }
                     } catch (IOException ex) {

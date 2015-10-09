@@ -25,10 +25,7 @@ public final class Eleicao {
 //Métodos relacionados à cargos
      //Adiciona um novo Cargo
      public void addCargo(int ID, String nome){
-         
-   
-         this.cargos.add(new Cargos(ID, nome, this.getSistema(nome)));
-        
+         this.cargos.add(new Cargos(ID, nome, Eleicao.getSistema(nome)));
      }
      
     public Cargos getCargoByID(int ID){
@@ -42,10 +39,8 @@ public final class Eleicao {
     
 //Métodos relacionados à partidos
      //Adiciona Partido
-     public Partidos addPartido(int ID, String nome){
-         Partidos tmp = new Partidos(ID,nome);
-         this.partidos.add(tmp);
-         return tmp;
+     public void addPartido(int ID, String nome){
+        this.partidos.add(new Partidos(ID,nome));
      }
      
      public Partidos getPartidoByID(int ID){
@@ -54,7 +49,6 @@ public final class Eleicao {
                 return p;
             }
         }
-        
         return null; 
      }
      
@@ -138,7 +132,6 @@ public final class Eleicao {
  //Retorna os votos para um @idCargo de um determinado partido @idCandidato
  public VotoLegenda getVotoByIdAndPartido(int idPartido, int idCargo){
         for (VotoLegenda v : this.votosLegenda) {
-
             if (v.getPartido().getID() == idPartido && v.getCargo().getID()==idCargo ) {
                 return v;
             }
@@ -175,8 +168,10 @@ public final class Eleicao {
           VotoCandidato c_tmp=null; //Candidato temporário
           if(cargo.getMajoritario()){
               int i;
-              for (i=0; i<this.votosCandidatos.size(); i++) { 
+              for (i=0; i<this.votosCandidatos.size(); i++) {
+                  
                  if(this.votosCandidatos.get(i).getCargo()==cargo){
+                     
                      if(c_tmp==null){//Se achou alguém que teve voto e 
                          c_tmp=this.votosCandidatos.get(i);
                      }else{//Verifique se teve mais votos que o anterior
@@ -193,8 +188,7 @@ public final class Eleicao {
                  } 
                  
               }
-              }
-          else{
+          }else{
               Partidos p_tmp = this.getPartidoMaisVotadoByCargo(cargo);
              if(p_tmp==null)
                  return null;
@@ -219,12 +213,6 @@ public final class Eleicao {
                  } 
                  
               }
-             
-              
-              
-              
-             
-             
           }
           return (c_tmp==null)?null:c_tmp.getCandidato(); //Retorna nulo se não teve nenhum voto para esse cargo!
           
@@ -260,8 +248,17 @@ public final class Eleicao {
        s+=("Candidato - "+candidato.getCargo().getNome()+"\n");
        s+=(candidato.getNome()+"\n");
        s+=(candidato.getPartido().getNome()+"\n");
-       s+=(this.getVotoByIdAndCargo(candidato.getID()).getVotos()+" voto"+((this.getVotoByIdAndCargo(candidato.getID()).getVotos()!=1)?"s":"")+"\n");
-       s+=((this.getEleitoByCargo(candidato.getCargo())==candidato)?"Eleito":"Não Eleito")+"\n";
+       if (candidato.getID()>9) //Vice sempre terá 0 votos
+            s+="0 votos\n";
+       else
+            s+=(this.getVotoByIdAndCargo(candidato.getID()).getVotos()+" voto"+((this.getVotoByIdAndCargo(candidato.getID()).getVotos()!=1)?"s":"")+"\n");
+      
+       
+       if(candidato.getID()>9) //Se é vice, temos que ver se o titular foi eleito!
+            s+=((this.getEleitoByCargo(this.getCandidatoByID(candidato.getID()/10).getCargo())==this.getCandidatoByID(candidato.getID()/10))?"Eleito":"Não Eleito")+"\n";
+       else
+            s+=((this.getEleitoByCargo(candidato.getCargo())==candidato)?"Eleito":"Não Eleito")+"\n";
+       
        return s;
     }
 
@@ -316,8 +313,8 @@ public final class Eleicao {
             }
                         
         }
-//        
-        for (i=0; i<this.votosLegenda.size(); i++) { //Soma todos os votos de LEGENDA
+//Soma todos os votos de LEGENDA        
+        for (i=0; i<this.votosLegenda.size(); i++) { 
             
             if(this.votosLegenda.get(i).getCargo()==cargo){
                 if(p.get(this.votosLegenda.get(i).getPartido())==null)//Se esse partido ainda não foi contabilizado
@@ -327,11 +324,11 @@ public final class Eleicao {
             }
                         
         }
-//        
+       
         
-        
+//Percorre e descobre o Partido mais votado        
         Entry<Partidos,Integer> maxEntry = null;
-        for(Entry<Partidos,Integer> entry : p.entrySet()) { //Percorre e descobre o Partido mais votado
+        for(Entry<Partidos,Integer> entry : p.entrySet()) { 
             if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
                 maxEntry = entry;
             }
