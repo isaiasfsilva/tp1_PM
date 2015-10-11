@@ -1,0 +1,5 @@
+Candidatos - Presidente	Votos
+Jo�o da Silva	1
+Brancos 	0
+Nulos 	0
+

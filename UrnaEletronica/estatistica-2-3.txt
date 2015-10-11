@@ -1,0 +1,5 @@
+Candidatos - Prefeito	Votos
+Ricardo Souza	1
+Brancos 	0
+Nulos 	0
+

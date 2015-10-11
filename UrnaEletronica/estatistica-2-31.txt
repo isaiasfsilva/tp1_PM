@@ -1,0 +1,4 @@
+Candidatos - Vice-prefeito	Votos
+Brancos 	0
+Nulos 	0
+

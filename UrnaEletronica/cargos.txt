@@ -1,0 +1,9 @@
+1;Presidente
+11;Vice-presidente
+2;Governador
+21;Vice-governador
+3;Prefeito
+31;Vice-prefeito
+4;Deputado federal
+5;Deputado estadual
+6;Vereador

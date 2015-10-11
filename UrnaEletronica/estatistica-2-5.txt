@@ -1,0 +1,7 @@
+Candidatos - Deputado estadual	Votos
+William Jones	1
+Brancos 	0
+Nulos 	0
+
+Partidos
+PPP	1
