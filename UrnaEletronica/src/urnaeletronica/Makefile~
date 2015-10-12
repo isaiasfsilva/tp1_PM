@@ -1,0 +1,12 @@
+all:
+	javac ../Eleicao/*.java
+	javac ../Utils/*.java
+	javac *.java
+
+clean:
+	rm -rf ../Eleicao/*.class
+	rm -rf ../Utils/*.class
+	rm -rf *.class
+
+run:
+	java UrnaEletronica

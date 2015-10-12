@@ -239,7 +239,7 @@ public final class Eleicao {
         m.put("Deputado federal", false);
         m.put("Deputado estadual", false);
         m.put("Vereador", false);
-        return m.getOrDefault(nome,false);
+        return (m.get(nome)==null)?m.get(nome):false;
     }
 
     //Gera relatório do candidato
@@ -304,14 +304,15 @@ public final class Eleicao {
     
     //Retorna o partido mais votado para um determinado cargo
     private Partidos getPartidoMaisVotadoByCargo(Cargos cargo) {
-        Map<Partidos, Integer> p = new HashMap<>();
+        Map<Partidos, Integer> p = new HashMap<Partidos, Integer>();
         int i;
         for (i=0; i<this.votosCandidatos.size(); i++) { //Soma todos os votos de candidato
             
             if(this.votosCandidatos.get(i).getCandidato().getCargo()==cargo){
-                if(p.get(this.votosCandidatos.get(i).getCandidato().getPartido())==null)//Se esse partido ainda não foi contabilizado
-                p.put(this.votosCandidatos.get(i).getCandidato().getPartido(), 0);
-                p.replace(this.votosCandidatos.get(i).getCandidato().getPartido(), (p.get(this.votosCandidatos.get(i).getCandidato().getPartido())+this.votosCandidatos.get(i).getVotos()));//Soma os votos para o partido
+                Integer temp =(p.get(this.votosCandidatos.get(i).getCandidato().getPartido())==null)?0:p.get(this.votosCandidatos.get(i).getCandidato().getPartido()); 
+                p.remove(this.votosCandidatos.get(i).getCandidato().getPartido());
+                p.put(this.votosCandidatos.get(i).getCandidato().getPartido(), temp+this.votosCandidatos.get(i).getVotos());
+               // p.replace(this.votosCandidatos.get(i).getCandidato().getPartido(), (p.get(this.votosCandidatos.get(i).getCandidato().getPartido())+this.votosCandidatos.get(i).getVotos()));//Soma os votos para o partido
 
             }
                         
@@ -320,9 +321,11 @@ public final class Eleicao {
         for (i=0; i<this.votosLegenda.size(); i++) { 
             
             if(this.votosLegenda.get(i).getCargo()==cargo){
-                if(p.get(this.votosLegenda.get(i).getPartido())==null)//Se esse partido ainda não foi contabilizado
-                p.put(this.votosLegenda.get(i).getPartido(), 0);
-                p.replace(this.votosLegenda.get(i).getPartido(), (p.get(this.votosLegenda.get(i).getPartido())+this.votosLegenda.get(i).getVotos()));//Soma os votos para o partido
+                Integer temp = (p.get(this.votosLegenda.get(i).getPartido())==null)?0:p.get(this.votosLegenda.get(i).getPartido());
+                p.remove(this.votosLegenda.get(i).getPartido());
+                p.put(this.votosLegenda.get(i).getPartido(), temp+this.votosLegenda.get(i).getVotos());
+              //  p.replace(this.votosLegenda.get(i).getPartido(), 
+                       // p.get(this.votosLegenda.get(i).getPartido())+this.votosLegenda.get(i).getVotos());//Soma os votos para o partido
 
             }
                         
