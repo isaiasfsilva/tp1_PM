@@ -57,7 +57,7 @@ public final class Eleicao {
      public void addCandidato(int ID, String nome, Cargos cargo, Partidos partido){
          this.candidatos.add(new Candidatos(ID, nome, cargo, partido));
      }
-     
+//Retorna o candidato pelo ID     
      public Candidatos getCandidatoByID(int ID){
         for (Candidatos c : this.candidatos) {
             if (c.getID() == ID) {
@@ -107,12 +107,12 @@ public final class Eleicao {
                     getVotoNuloByCargo(idCargo).addVoto();  
                 }else{
                 //Se não existe voto similar, ele cria. Caso contrário ADD VOTO
-               if(getVotoByIdAndCargo(idDest)==null)
+               if(getVotoById(idDest)==null)
                   this.votosCandidatos.add(new VotoCandidato(ID, this.getCargoByID(idCargo), getCandidatoByID(idDest)));
 
 
                //vota no candidato / Cargo
-               getVotoByIdAndCargo(idDest).addVoto();
+               getVotoById(idDest).addVoto();
                 }
             }
         }
@@ -120,7 +120,7 @@ public final class Eleicao {
     }
     
  //Retorna os votos do candidato @idCandidato
- public VotoCandidato getVotoByIdAndCargo(int idCandidato){
+ public VotoCandidato getVotoById(int idCandidato){
         for (VotoCandidato v : this.votosCandidatos) {
             if ( v.getCandidato().getID() == idCandidato ) {
                 return v;
@@ -251,7 +251,7 @@ public final class Eleicao {
        if (candidato.getID()>9) //Vice sempre terá 0 votos
             s+="0 votos\n";
        else
-            s+=(this.getVotoByIdAndCargo(candidato.getID()).getVotos()+" voto"+((this.getVotoByIdAndCargo(candidato.getID()).getVotos()!=1)?"s":"")+"\n");
+            s+=(this.getVotoById(candidato.getID()).getVotos()+" voto"+((this.getVotoById(candidato.getID()).getVotos()!=1)?"s":"")+"\n");
       
        
        if(candidato.getID()>9) //Se é vice, temos que ver se o titular foi eleito!
@@ -267,33 +267,36 @@ public final class Eleicao {
        String s="";
        s+=("Candidatos - "+cargo.getNome()+"\tVotos\n");
        int i;
-       for (i=0; i<this.votosCandidatos.size(); i++) { 
-           if(this.votosCandidatos.get(i).getCandidato().getCargo()==cargo)
-                s+=(this.votosCandidatos.get(i).getCandidato().getNome()+"\t"+this.votosCandidatos.get(i).getVotos()+"\n");
-        }
-       
-       int qvotos=0;
-       for (i=0; i<this.votosBranco.size(); i++) { 
-            if(this.votosBranco.get(i).getCargo()==cargo)
-                qvotos=this.votosBranco.get(i).getVotos();
-        }      
-        s+=("Brancos \t" +qvotos+"\n");
-        
-        qvotos=0;
-        for (i=0; i<this.votosNulo.size(); i++) { 
-            if(this.votosNulo.get(i).getCargo()==cargo)
-                qvotos=this.votosNulo.get(i).getVotos();
-        }
-        s+=("Nulos \t" +qvotos+"\n\n");
-        
-        //Mostra votos LEGENDA
-        String rotulo="Partidos\n";
-        for (i=0; i<this.votosLegenda.size(); i++) { 
-           if(this.votosLegenda.get(i).getCargo()==cargo){
-               s+=(rotulo+this.votosLegenda.get(i).getPartido().getNome()+"\t"+this.votosLegenda.get(i).getVotos()+"\n");
-               rotulo="";
-           }
-        }
+        for (i=0; i<this.candidatos.size(); i++) { 
+            if(this.candidatos.get(i).getCargo()==cargo){
+                //Retorna 0 se o candidato não teve voto e N se o candidato tem algum voto, onde N é a quantidade de votos
+                int qvotos = (getVotoById(this.candidatos.get(i).getID())!=null)?getVotoById(this.candidatos.get(i).getID()).getVotos():0;
+                s+=(this.candidatos.get(i).getNome()+"\t"+qvotos+"\n");
+            }
+         }
+
+        int qvotos=0;
+            for (i=0; i<this.votosBranco.size(); i++) { 
+                 if(this.votosBranco.get(i).getCargo()==cargo)
+                     qvotos=this.votosBranco.get(i).getVotos();
+             }      
+             s+=("Brancos \t" +qvotos+"\n");
+
+             qvotos=0;
+             for (i=0; i<this.votosNulo.size(); i++) { 
+                 if(this.votosNulo.get(i).getCargo()==cargo)
+                     qvotos=this.votosNulo.get(i).getVotos();
+             }
+             s+=("Nulos \t" +qvotos+"\n\n");
+
+             //Mostra votos LEGENDA
+             String rotulo="Partidos\n";
+             for (i=0; i<this.votosLegenda.size(); i++) { 
+                if(this.votosLegenda.get(i).getCargo()==cargo){
+                    s+=(rotulo+this.votosLegenda.get(i).getPartido().getNome()+"\t"+this.votosLegenda.get(i).getVotos()+"\n");
+                    rotulo="";
+                }
+             }
       return s;
        }
 

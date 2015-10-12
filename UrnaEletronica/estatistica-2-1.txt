@@ -1,5 +1,6 @@
 Candidatos - Presidente	Votos
 Jo�o da Silva	1
+Cristiano Ronaldo	0
 Brancos 	0
 Nulos 	0
 

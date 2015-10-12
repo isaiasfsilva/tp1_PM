@@ -1,9 +1,5 @@
-1;00   //Relatório Geral
-2;1    //Cargo:Presidente
-2;3    //Cargo:Prefeito
-2;31    //Cargo: Vice-prefeito (ele verifica se o prefeito vinculado à ele foi eleito. Então ele também estará
-2;5    //Dep. federal (Votos legenda e tudo mais.)
-2;6    //Cargo: Vereados
-3;7    //Info do Daniel San (Dep. Federal)
-3;4	//Info do Ricardo Souza - Prefeito
-3;41   //Indo do Neymar Júnior -Vice-Prefeito (ele verifica se o prefeito vinculado à ele foi eleito. Então ele também estará) 
+1;00
+2;1
+2;6
+3;7
+2;31
