@@ -18,7 +18,7 @@ import java.io.Writer;
  *
  * @author isaiasfaria
  */
-public class Utils {
+public abstract  class  Utils {
     // Retorna o candidato A se ele vier primeiro pela ordem alfabética. Se der empate retorna o A.
     public static Candidatos ordemAlfabetica(Candidatos A, Candidatos B){
         if(B.getNome().compareTo(A.getNome())<0)
@@ -120,7 +120,7 @@ public class Utils {
             
             }
         } catch (IOException error) {
-                System.out.println("Erro ao importar os Candidatos. Abortando operação agora!");
+                System.out.println("Erro ao importar os relatórios. Abortando operação agora!");
         }
     }
     
